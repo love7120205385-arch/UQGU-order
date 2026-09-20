@@ -5,120 +5,123 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>日本現場連線代購 ｜ 訂單填寫系統</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=Zen+Kaku+Gothic+New:wght@500;700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
   <style>
     body {
-      font-family: 'Zen Kaku Gothic New', 'Noto Sans TC', sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang TC", "Hiragino Sans GB", "Microsoft JhengHei", "Noto Sans TC", sans-serif;
       background-color: #F8F5F0;
+      -webkit-font-smoothing: antialiased;
     }
     .tokyo-pattern {
       background-color: #FAF7F2;
-      background-image: radial-gradient(#DDD3C4 0.8px, transparent 0.8px), radial-gradient(#DDD3C4 0.8px, #FAF7F2 0.8px);
-      background-size: 24px 24px;
-      background-position: 0 0, 12px 12px;
+      background-image: radial-gradient(#DDD3C4 1px, transparent 1px), radial-gradient(#DDD3C4 1px, #FAF7F2 1px);
+      background-size: 26px 26px;
+      background-position: 0 0, 13px 13px;
     }
   </style>
 </head>
-<body class="text-[#3D352E] min-h-screen py-5 px-3.5 sm:px-6 flex flex-col items-center justify-start">
-  <div class="w-full max-w-md bg-[#FAF7F2] rounded-[28px] shadow-sm border border-[#E8DFD1] overflow-hidden">
+<body class="text-[#332A24] min-h-screen py-5 px-3 sm:px-6 flex flex-col items-center justify-start">
+  <div class="w-full max-w-lg bg-[#FAF7F2] rounded-[32px] shadow-sm border border-[#E8DFD1] overflow-hidden">
     
-    <!-- 頁頭：濃郁深焙摩卡棕 -->
-    <header class="bg-[#30241E] text-[#F5EFE6] px-5 py-5 sm:p-6 text-center relative overflow-hidden">
+    <!-- 頁頭：深焙拿鐵咖啡風格 -->
+    <header class="bg-[#2D211A] text-[#F5EFE6] px-6 py-7 text-center relative overflow-hidden">
       <!-- 裝飾水印 -->
-      <div class="absolute -right-4 -bottom-5 text-6xl font-black text-white/[0.04] select-none pointer-events-none tracking-tighter">
+      <div class="absolute -right-4 -bottom-6 text-7xl font-black text-white/[0.03] select-none pointer-events-none tracking-tight">
         TOKYO
       </div>
 
-      <div class="relative z-10 space-y-2.5">
+      <div class="relative z-10 space-y-3.5">
         <!-- 匯率公式 -->
-        <h1 class="text-[19px] sm:text-xl font-black tracking-wide text-[#FAF6F0]">
+        <h1 class="text-xl sm:text-2xl font-black tracking-wide text-[#FAF6F0]">
           商品計算：商品稅後價 × 0.22315
         </h1>
 
-        <!-- 金額警語（修正語法） -->
-        <div class="py-1 px-2.5 bg-[#42332A] rounded-xl border border-[#E07A5F]/40 inline-block w-full">
-          <p class="text-[13px] sm:text-sm font-black text-[#E88C74] tracking-wider">
-            * 僅接總金額台幣 1000～5000 元訂單 *
+        <!-- 金額警語 -->
+        <div class="py-2 px-3 bg-[#423126] rounded-2xl border border-[#E07A5F]/40 inline-block w-full">
+          <p class="text-sm sm:text-base font-black text-[#E88C74] tracking-wider">
+            * 服飾類僅接總金額台幣 2000 元以上訂單 *
           </p>
         </div>
 
-        <!-- 日程（手機單行不折行設計） -->
-        <div class="text-[11.5px] sm:text-[13px] text-[#DDA15E] font-bold tracking-tight whitespace-nowrap flex items-center justify-center gap-1.5 pt-0.5">
-          <span>⏰ 9/29 10:00 收單</span>
-          <span class="text-[#8D7B68] font-normal">｜</span>
-          <span>📦 10/2 起陸續出貨</span>
+        <!-- 日程展示：清晰兩行 -->
+        <div class="py-1 space-y-1 text-sm sm:text-base font-bold text-[#DDA15E] tracking-wide">
+          <div>⏰ 9/29 10:00 收單</div>
+          <div>📦 10/2 起陸續出貨</div>
         </div>
 
-        <!-- 3 步驟橫向對齊質感卡片 -->
-        <div class="mt-2.5 bg-[#231A15] rounded-2xl p-3 border border-white/5 grid grid-cols-3 gap-1.5 text-center">
+        <!-- 3 步驟卡片 -->
+        <div class="mt-3 bg-[#1F1612] rounded-2xl p-3.5 border border-white/5 grid grid-cols-3 gap-2 text-center">
+          <!-- STEP 1 -->
           <div class="space-y-1">
-            <span class="text-[10px] font-bold text-[#30241E] bg-[#DDA15E] px-1.5 py-0.5 rounded-md">STEP 1</span>
-            <p class="text-xs font-bold text-[#FAF6F0]">填單截圖</p>
-            <p class="text-[10px] text-[#A69788] leading-tight">填單並截圖</p>
+            <span class="text-[11px] font-bold text-[#2D211A] bg-[#DDA15E] px-2 py-0.5 rounded-md">STEP 1</span>
+            <p class="text-sm font-black text-[#FAF6F0] pt-0.5">填單截圖</p>
+            <p class="text-[11px] text-[#A69788] leading-tight">填單並截圖</p>
           </div>
+          <!-- STEP 2 -->
           <div class="space-y-1 border-x border-white/10 px-1">
-            <span class="text-[10px] font-bold text-[#30241E] bg-[#DDA15E] px-1.5 py-0.5 rounded-md">STEP 2</span>
-            <p class="text-xs font-bold text-[#FAF6F0]">私訊對帳</p>
-            <p class="text-[10px] text-[#A69788] leading-tight">小盒子傳圖</p>
+            <span class="text-[11px] font-bold text-[#2D211A] bg-[#DDA15E] px-2 py-0.5 rounded-md">STEP 2</span>
+            <p class="text-sm font-black text-[#FAF6F0] pt-0.5">私訊小盒子</p>
+            <p class="text-[11px] text-[#A69788] leading-tight">傳送訂金資訊</p>
           </div>
+          <!-- STEP 3 -->
           <div class="space-y-1">
-            <span class="text-[10px] font-bold text-[#30241E] bg-[#DDA15E] px-1.5 py-0.5 rounded-md">STEP 3</span>
-            <p class="text-xs font-bold text-[#FAF6F0]">連線採買</p>
-            <p class="text-[10px] text-[#A69788] leading-tight">採購後出貨</p>
+            <span class="text-[11px] font-bold text-[#2D211A] bg-[#DDA15E] px-2 py-0.5 rounded-md">STEP 3</span>
+            <p class="text-sm font-black text-[#FAF6F0] pt-0.5">連線採買</p>
+            <p class="text-[11px] text-[#A69788] leading-tight">現場採買出貨</p>
           </div>
         </div>
       </div>
     </header>
 
     <!-- 步驟一：選擇品牌畫面 -->
-    <div id="stepBrand" class="p-6 sm:p-7 space-y-5 tokyo-pattern">
-      <div class="text-center space-y-1">
-        <h2 class="text-base font-black text-[#30241E] tracking-widest">/ 請選擇代購品牌 /</h2>
-        <p class="text-[11px] text-[#8D7B68] font-medium tracking-wide">點選後即進入專屬商品填單頁面</p>
+    <div id="stepBrand" class="p-7 sm:p-8 space-y-6 tokyo-pattern">
+      <div class="text-center space-y-1.5">
+        <h2 class="text-lg font-black text-[#2D211A] tracking-wider">/ 請選擇代購品牌 /</h2>
+        <p class="text-xs text-[#8D7B68] font-medium tracking-wide">點選後即進入專屬商品填單頁面</p>
       </div>
 
-      <div class="grid grid-cols-2 gap-3.5 pt-1">
+      <div class="grid grid-cols-2 gap-4 pt-1">
         <!-- UQ 按鈕 -->
         <button type="button" onclick="selectBrand('UQ')" 
-                class="group flex flex-col items-center justify-center py-6 px-4 bg-[#E60012] rounded-2xl shadow hover:opacity-95 active:scale-95 transition text-white">
-          <span class="text-2xl font-black tracking-widest leading-none">UQ</span>
-          <span class="text-[11px] font-medium opacity-80 mt-1">UNIQLO</span>
+                class="group flex flex-col items-center justify-center py-7 px-4 bg-[#E60012] rounded-2xl shadow hover:opacity-95 active:scale-95 transition text-white">
+          <span class="text-3xl font-black tracking-widest leading-none">UQ</span>
+          <span class="text-xs font-semibold opacity-90 mt-1.5">UNIQLO</span>
         </button>
 
         <!-- GU 按鈕 -->
         <button type="button" onclick="selectBrand('GU')" 
-                class="group flex flex-col items-center justify-center py-6 px-4 bg-[#002B66] rounded-2xl shadow hover:opacity-95 active:scale-95 transition text-white">
-          <span class="text-2xl font-black tracking-widest leading-none">GU</span>
-          <span class="text-[11px] font-medium opacity-80 mt-1">ジーユー</span>
+                class="group flex flex-col items-center justify-center py-7 px-4 bg-[#002B66] rounded-2xl shadow hover:opacity-95 active:scale-95 transition text-white">
+          <span class="text-3xl font-black tracking-widest leading-none">GU</span>
+          <span class="text-xs font-semibold opacity-90 mt-1.5">ジーユー</span>
         </button>
       </div>
     </div>
 
     <!-- 步驟二：填寫資料畫面 (預設隱藏) -->
-    <form id="orderForm" class="p-5 sm:p-6 space-y-5 hidden bg-[#FAF7F2]">
-      <!-- 頂部當前品牌提示 -->
-      <div class="flex items-center justify-between pb-3 border-b border-[#E8DFD1]">
+    <form id="orderForm" class="p-6 space-y-6 hidden bg-[#FAF7F2]">
+      <!-- 頂部切換與標籤 -->
+      <div class="flex items-center justify-between pb-3.5 border-b border-[#E8DFD1]">
         <div class="flex items-center gap-2">
-          <span id="brandBadge" class="text-xs font-bold px-3 py-1 rounded-full text-white"></span>
+          <span id="brandBadge" class="text-xs font-bold px-3 py-1.5 rounded-full text-white"></span>
           <span class="text-xs text-[#8D7B68] font-bold">現場採買填單</span>
         </div>
-        <button type="button" onclick="backToSelect()" class="text-xs text-[#8D7B68] hover:text-[#30241E] underline">切換品牌</button>
+        <button type="button" onclick="backToSelect()" class="text-xs text-[#8D7B68] hover:text-[#2D211A] underline font-medium">切換品牌</button>
       </div>
 
-      <!-- 顧客基本資料 -->
-      <div class="bg-[#F3EDE3] p-4 rounded-2xl border border-[#E2D6C3] space-y-2">
+      <!-- Threads 帳號輸入 -->
+      <div class="bg-[#F3EDE3] p-4.5 sm:p-5 rounded-2xl border border-[#E2D6C3] space-y-2.5">
         <div class="flex justify-between items-center">
-          <label class="block text-xs font-bold text-[#30241E]">
+          <label class="block text-sm font-bold text-[#2D211A]">
             Threads 帳號 <span class="text-[#D34528]">*</span>
           </label>
-          <span id="draftNotice" class="text-[10px] text-[#4F7A59] hidden font-bold">● 已自動暫存</span>
+          <span id="draftNotice" class="text-xs text-[#4F7A59] hidden font-bold">● 已自動暫存</span>
         </div>
         <div class="relative">
-          <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-[#9E9081] font-bold text-xs">@</span>
+          <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center text-[#9E9081] font-bold text-sm">@</span>
           <input type="text" id="threads" required placeholder="例：hunnie_franc" 
-                 class="w-full pl-7 pr-3 py-2 bg-white border border-[#D9CEBF] rounded-xl focus:ring-2 focus:ring-[#30241E] focus:outline-none text-xs text-[#30241E]">
+                 class="w-full pl-8 pr-4 py-2.5 bg-white border border-[#D9CEBF] rounded-xl focus:ring-2 focus:ring-[#2D211A] focus:outline-none text-sm text-[#2D211A]">
         </div>
-        <p class="text-[11px] text-[#8D7B68]">採買完畢將透過 Threads 私訊明細核對。</p>
+        <p class="text-xs text-[#8D7B68]">採買完畢將透過 Threads 私訊明細核對。</p>
       </div>
 
       <!-- 商品清單區塊 -->
@@ -126,14 +129,14 @@
 
       <!-- 新增商品按鈕 -->
       <button type="button" id="addItemBtn" 
-              class="w-full py-3 border-2 border-dashed border-[#D2C5B3] rounded-2xl text-[#675C51] font-bold hover:border-[#30241E] hover:text-[#30241E] transition flex items-center justify-center gap-1 text-xs bg-white/60">
+              class="w-full py-3.5 border-2 border-dashed border-[#D2C5B3] rounded-2xl text-[#675C51] font-bold hover:border-[#2D211A] hover:text-[#2D211A] transition flex items-center justify-center gap-1.5 text-sm bg-white/70">
         <span>＋ 新增下一件商品</span>
       </button>
 
       <!-- 送出按鈕 -->
       <div class="pt-3 border-t border-[#E8DFD1]">
         <button type="submit" id="submitBtn" 
-                class="w-full bg-[#30241E] hover:bg-[#201814] text-[#FAF6F0] font-bold py-3.5 px-4 rounded-2xl shadow transition flex items-center justify-center text-xs tracking-wider">
+                class="w-full bg-[#2D211A] hover:bg-[#1A130F] text-[#FAF6F0] font-bold py-4 px-4 rounded-2xl shadow-sm transition flex items-center justify-center text-sm tracking-wider">
           <span>確認無誤，送出訂單</span>
         </button>
       </div>
@@ -142,21 +145,21 @@
 
   <!-- 成功彈窗 -->
   <div id="successModal" class="hidden fixed inset-0 bg-black/65 backdrop-blur-sm flex items-center justify-center p-4 z-50">
-    <div class="bg-[#FAF7F2] rounded-3xl p-6 max-w-xs w-full text-center space-y-4 shadow-2xl border border-[#E8DFD1]">
-      <div class="w-12 h-12 bg-[#E7F3E8] text-[#2F6B38] rounded-full flex items-center justify-center mx-auto text-xl font-bold">✓</div>
+    <div class="bg-[#FAF7F2] rounded-3xl p-6 max-w-sm w-full text-center space-y-4 shadow-2xl border border-[#E8DFD1]">
+      <div class="w-14 h-14 bg-[#E7F3E8] text-[#2F6B38] rounded-full flex items-center justify-center mx-auto text-2xl font-bold">✓</div>
       
       <div class="space-y-1">
-        <h3 class="text-base font-bold text-[#30241E]">訂單已成功送出！</h3>
-        <p class="text-xs text-[#8D7B68]">編號：<span id="displayOrderId" class="font-mono font-bold text-[#30241E] text-xs"></span></p>
+        <h3 class="text-lg font-bold text-[#2D211A]">訂單已成功送出！</h3>
+        <p class="text-xs text-[#8D7B68]">訂單編號：<span id="displayOrderId" class="font-mono font-bold text-[#2D211A] text-sm"></span></p>
       </div>
 
-      <div class="bg-[#FFF3E8] border border-[#F2D1B3] text-[#A0521C] p-3 rounded-xl text-[11.5px] text-left leading-relaxed font-semibold space-y-1">
+      <div class="bg-[#FFF3E8] border border-[#F2D1B3] text-[#A0521C] p-3.5 rounded-2xl text-xs text-left leading-relaxed font-semibold space-y-1">
         <div>⚠️ 重要提醒：</div>
-        <div>1. 請截圖此畫面私訊 Threads 小盒子。</div>
-        <div>2. 私訊時請主動詢問「訂金資訊」保留名額。</div>
+        <div>1. 請務必截圖此畫面私訊 Threads 小盒子。</div>
+        <div>2. 私訊時請主動詢問「訂金資訊」以保留採買名額。</div>
       </div>
 
-      <button id="closeModalBtn" class="w-full bg-[#30241E] text-white font-medium py-2.5 rounded-xl text-xs hover:bg-[#201814] transition">
+      <button id="closeModalBtn" class="w-full bg-[#2D211A] text-white font-medium py-3 rounded-xl text-sm hover:bg-[#1A130F] transition">
         完成 / 回首頁
       </button>
     </div>
@@ -164,7 +167,7 @@
 
   <script>
     const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwg8QHhdcbQ6wIUvhLkphgiTaYqvVUox2dF-hbevI92zV2xVLQ5_kAQwrrf833AQ0Cv/exec';
-    const STORAGE_KEY = 'TOKYO_ORDER_CLEAN_V4';
+    const STORAGE_KEY = 'TOKYO_ORDER_ELEGANT_V5';
 
     let currentBrand = '';
     let itemCount = 0;
@@ -183,10 +186,10 @@
 
       if (brand === 'UQ') {
         brandBadge.innerText = 'UQ';
-        brandBadge.className = 'text-xs font-bold px-3 py-1 rounded-full text-white bg-[#E60012]';
+        brandBadge.className = 'text-xs font-bold px-3 py-1.5 rounded-full text-white bg-[#E60012]';
       } else {
         brandBadge.innerText = 'GU';
-        brandBadge.className = 'text-xs font-bold px-3 py-1 rounded-full text-white bg-[#002B66]';
+        brandBadge.className = 'text-xs font-bold px-3 py-1.5 rounded-full text-white bg-[#002B66]';
       }
 
       if (itemsContainer.children.length === 0) {
@@ -244,64 +247,64 @@
       const currentId = itemCount;
       const initialQty = initialData.qty || 1;
       const div = document.createElement('div');
-      div.className = 'item-card border border-[#E5DAC8] rounded-2xl p-3.5 bg-white shadow-sm space-y-2.5';
+      div.className = 'item-card border border-[#E5DAC8] rounded-2xl p-4 sm:p-5 bg-white shadow-sm space-y-3';
       div.id = `item-${currentId}`;
       div.innerHTML = `
-        <div class="flex justify-between items-center pb-1.5 border-b border-[#F0E8DC]">
-          <span class="font-black text-xs text-[#30241E]">商品 #${itemsContainer.children.length + 1}</span>
-          ${itemsContainer.children.length > 0 ? `<button type="button" onclick="removeItem(${currentId})" class="text-[11px] text-[#D34528] hover:underline font-bold">刪除此件</button>` : ''}
+        <div class="flex justify-between items-center pb-2 border-b border-[#F0E8DC]">
+          <span class="font-black text-xs text-[#2D211A]">商品 #${itemsContainer.children.length + 1}</span>
+          ${itemsContainer.children.length > 0 ? `<button type="button" onclick="removeItem(${currentId})" class="text-xs text-[#D34528] hover:underline font-bold">刪除此件</button>` : ''}
         </div>
 
-        <div class="p-2.5 bg-[#FAF7F2] rounded-xl border border-[#E8DFD1]">
-          <label class="block text-[11px] font-bold text-[#30241E] mb-1">
+        <div class="p-3 bg-[#FAF7F2] rounded-xl border border-[#E8DFD1]">
+          <label class="block text-xs font-bold text-[#2D211A] mb-1.5">
             上傳商品照 <span class="text-[#D34528]">* (必填)</span>
           </label>
-          <input type="file" accept="image/*" required class="item-file w-full text-xs text-[#8D7B68] file:mr-2 file:py-1 file:px-2.5 file:rounded-lg file:border-0 file:text-[11px] file:font-bold file:bg-[#30241E] file:text-white hover:file:opacity-90">
+          <input type="file" accept="image/*" required class="item-file w-full text-xs text-[#8D7B68] file:mr-2.5 file:py-1.5 file:px-3 file:rounded-lg file:border-0 file:text-xs file:font-bold file:bg-[#2D211A] file:text-white hover:file:opacity-90">
         </div>
 
-        <div class="grid grid-cols-12 gap-2.5">
+        <div class="grid grid-cols-12 gap-3">
           <div class="col-span-6">
-            <label class="block text-[11px] font-bold text-[#564B41] mb-1">貨號 <span class="text-[#D34528]">*</span></label>
-            <input type="text" class="item-no w-full px-2.5 py-1.5 border border-[#D9CEBF] rounded-xl text-xs focus:ring-1 focus:ring-[#30241E] focus:outline-none bg-[#FCFAF7]" 
+            <label class="block text-xs font-bold text-[#564B41] mb-1">貨號 <span class="text-[#D34528]">*</span></label>
+            <input type="text" class="item-no w-full px-3 py-2 border border-[#D9CEBF] rounded-xl text-sm focus:ring-2 focus:ring-[#2D211A] focus:outline-none bg-[#FCFAF7]" 
                    placeholder="輸入貨號" value="${initialData.itemNo || ''}" required>
           </div>
           <div class="col-span-6">
-            <label class="block text-[11px] font-bold text-[#564B41] mb-1">數量 <span class="text-[#D34528]">*</span></label>
+            <label class="block text-xs font-bold text-[#564B41] mb-1">數量 <span class="text-[#D34528]">*</span></label>
             <div class="flex items-center border border-[#D9CEBF] rounded-xl bg-[#FCFAF7] overflow-hidden">
-              <button type="button" onclick="changeQty(${currentId}, -1)" class="w-8 py-1.5 bg-[#F4EFE6] text-[#30241E] font-bold text-sm select-none">−</button>
-              <input type="number" readonly class="item-qty w-full text-center py-1.5 bg-transparent text-xs font-bold text-[#30241E] focus:outline-none select-none" value="${initialQty}">
-              <button type="button" onclick="changeQty(${currentId}, 1)" class="w-8 py-1.5 bg-[#F4EFE6] text-[#30241E] font-bold text-sm select-none">+</button>
+              <button type="button" onclick="changeQty(${currentId}, -1)" class="w-9 py-2 bg-[#F4EFE6] text-[#2D211A] font-bold text-base select-none">−</button>
+              <input type="number" readonly class="item-qty w-full text-center py-2 bg-transparent text-sm font-bold text-[#2D211A] focus:outline-none select-none" value="${initialQty}">
+              <button type="button" onclick="changeQty(${currentId}, 1)" class="w-9 py-2 bg-[#F4EFE6] text-[#2D211A] font-bold text-base select-none">+</button>
             </div>
           </div>
         </div>
 
-        <div class="grid grid-cols-2 gap-2.5">
+        <div class="grid grid-cols-2 gap-3">
           <div>
-            <label class="block text-[11px] font-bold text-[#564B41] mb-1">顏色 <span class="text-[#D34528]">*</span></label>
-            <input type="text" class="item-color w-full px-2.5 py-1.5 border border-[#D9CEBF] rounded-xl text-xs focus:ring-1 focus:ring-[#30241E] focus:outline-none bg-[#FCFAF7]" 
+            <label class="block text-xs font-bold text-[#564B41] mb-1">顏色 <span class="text-[#D34528]">*</span></label>
+            <input type="text" class="item-color w-full px-3 py-2 border border-[#D9CEBF] rounded-xl text-sm focus:ring-2 focus:ring-[#2D211A] focus:outline-none bg-[#FCFAF7]" 
                    placeholder="例：03 GRAY" value="${initialData.color || ''}" required>
           </div>
           <div>
-            <label class="block text-[11px] font-bold text-[#564B41] mb-1">尺寸 <span class="text-[#D34528]">*</span></label>
-            <input type="text" class="item-size w-full px-2.5 py-1.5 border border-[#D9CEBF] rounded-xl text-xs focus:ring-1 focus:ring-[#30241E] focus:outline-none bg-[#FCFAF7]" 
+            <label class="block text-xs font-bold text-[#564B41] mb-1">尺寸 <span class="text-[#D34528]">*</span></label>
+            <input type="text" class="item-size w-full px-3 py-2 border border-[#D9CEBF] rounded-xl text-sm focus:ring-2 focus:ring-[#2D211A] focus:outline-none bg-[#FCFAF7]" 
                    placeholder="例：WOMEN M" value="${initialData.size || ''}" required>
           </div>
         </div>
 
         <div>
           <div class="flex justify-between items-center mb-1">
-            <label class="block text-[11px] font-bold text-[#564B41]">缺貨備選方案</label>
-            <button type="button" onclick="setCancelBackup(${currentId})" class="text-[10px] text-[#A0521C] font-bold underline">
+            <label class="block text-xs font-bold text-[#564B41]">缺貨備選方案</label>
+            <button type="button" onclick="setCancelBackup(${currentId})" class="text-xs text-[#A0521C] font-bold underline">
               點此填入「直接取消」
             </button>
           </div>
-          <input type="text" class="item-backup w-full px-2.5 py-1.5 border border-[#D9CEBF] rounded-xl text-xs focus:ring-1 focus:ring-[#30241E] focus:outline-none bg-[#FCFAF7]" 
+          <input type="text" class="item-backup w-full px-3 py-2 border border-[#D9CEBF] rounded-xl text-sm focus:ring-2 focus:ring-[#2D211A] focus:outline-none bg-[#FCFAF7]" 
                  placeholder="例：改換 09 BLACK" value="${initialData.backup || ''}">
         </div>
 
         <div>
-          <label class="block text-[11px] font-bold text-[#564B41] mb-1">備註</label>
-          <input type="text" class="item-note w-full px-2.5 py-1.5 border border-[#D9CEBF] rounded-xl text-xs focus:ring-1 focus:ring-[#30241E] focus:outline-none bg-[#FCFAF7]" 
+          <label class="block text-xs font-bold text-[#564B41] mb-1">備註</label>
+          <input type="text" class="item-note w-full px-3 py-2 border border-[#D9CEBF] rounded-xl text-sm focus:ring-2 focus:ring-[#2D211A] focus:outline-none bg-[#FCFAF7]" 
                  value="${initialData.note || ''}">
         </div>
       `;
