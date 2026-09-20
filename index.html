@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>日本現場連線代購 ｜ 訂單填寫系統</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=Zen+Kaku+Gothic+New:wght@500;700;900&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Zen Kaku Gothic New', 'Noto Sans TC', sans-serif;
+      background-color: #F9F6F0; /* 燕麥奶白 */
+    }
+    .tokyo-pattern {
+      background-color: #F4EFE6;
+      background-image: radial-gradient(#D6C7B2 0.75px, transparent 0.75px), radial-gradient(#D6C7B2 0.75px, #F4EFE6 0.75px);
+      background-size: 30px 30px;
+      background-position: 0 0, 15px 15px;
+    }
+  </style>
+</head>
+<body class="text-[#3D352E] min-h-screen py-6 px-3 sm:px-6 lg:px-8 flex flex-col items-center justify-start">
+  <div class="w-full max-w-xl bg-[#FAF7F2] rounded-3xl shadow-sm border border-[#E8DFD1] overflow-hidden">
+    
+    <!-- 頁頭：深焙摩卡拿鐵風 -->
+    <header class="bg-[#342822] text-[#F5EFE6] p-6 sm:p-7 text-center relative overflow-hidden">
+      <!-- 背景浮水印 -->
+      <div class="absolute -right-6 -bottom-6 text-7xl font-black text-white/[0.03] select-none pointer-events-none">
+        TOKYO
+      </div>
+
+      <div class="relative z-10 space-y-3">
+        <!-- 商品計算：溫潤燕麥奶白 -->
+        <h1 class="text-xl sm:text-2xl font-black tracking-wide text-[#F5EFE6]">
+          商品計算：商品稅後價 × 0.22315
+        </h1>
+
+        <!-- 金額警語：焦糖栗子暖橘色 -->
+        <div class="py-1 px-3 bg-[#44352D] rounded-xl border border-[#E07A5F]/30 inline-block w-full">
+          <p class="text-base sm:text-lg font-black text-[#E07A5F] tracking-wider">
+            *只接總金額台幣1000-5000 以上訂單*
+          </p>
+        </div>
+
+        <!-- 收單日程：栗子金棕色 -->
+        <div class="text-sm sm:text-base text-[#DDA15E] font-bold tracking-wide">
+          ⏰ 收單截止：9/29 10:00 ｜ 📦 回台出貨：10/2起陸續寄出
+        </div>
+
+        <!-- 3步驟流程導引：厚拿鐵色塊 -->
+        <div class="mt-3 bg-[#241B17] rounded-2xl p-4 border border-white/5 text-left text-sm sm:text-base text-[#EDE0D4] space-y-2">
+          <div class="flex items-start gap-2">
+            <span class="font-black text-[#DDA15E] shrink-0">1. 填單截圖</span>
+            <span class="text-[#EDE0D4] font-medium">填寫清單並截圖保存</span>
+          </div>
+          <div class="text-[#8D7B68] pl-4 text-xs leading-none">➜</div>
+          <div class="flex items-start gap-2">
+            <span class="font-black text-[#DDA15E] shrink-0">2. 私訊對帳</span>
+            <span class="text-[#EDE0D4] font-medium">私訊 Threads 小盒子確認</span>
+          </div>
+          <div class="text-[#8D7B68] pl-4 text-xs leading-none">➜</div>
+          <div class="flex items-start gap-2">
+            <span class="font-black text-[#DDA15E] shrink-0">3. 連線採買</span>
+            <span class="text-[#EDE0D4] font-medium">現場確認庫存、回台迅速出貨</span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- 步驟一：選擇品牌畫面 (Step 1) -->
+    <div id="stepBrand" class="p-6 sm:p-8 space-y-6 tokyo-pattern">
+      <div class="text-center space-y-1">
+        <h2 class="text-lg font-black text-[#342822] tracking-wider">/請選擇品牌/</h2>
+        <p class="text-xs text-[#8D7B68] font-medium tracking-wide">/點選後即進入專屬商品填單/</p>
+      </div>
+
+      <div class="grid grid-cols-2 gap-4">
+        <!-- UQ 按鈕：紅色背景、白字 -->
+        <button type="button" onclick="selectBrand('UQ')" 
+                class="group flex items-center justify-center p-7 sm:p-8 bg-[#E60012] rounded-2xl shadow hover:opacity-95 active:scale-95 transition duration-150 text-white">
+          <span class="text-2xl sm:text-3xl font-black tracking-wider leading-none">UQ</span>
+        </button>
+
+        <!-- GU 按鈕：深藍背景、白字 -->
+        <button type="button" onclick="selectBrand('GU')" 
+                class="group flex items-center justify-center p-7 sm:p-8 bg-[#002B66] rounded-2xl shadow hover:opacity-95 active:scale-95 transition duration-150 text-white">
+          <span class="text-2xl sm:text-3xl font-black tracking-wider leading-none">GU</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- 步驟二：填寫資料畫面 (Step 2 - 預設隱藏) -->
+    <form id="orderForm" class="p-6 space-y-6 hidden bg-[#FAF7F2]">
+      <!-- 頂部當前品牌提示 -->
+      <div class="flex items-center justify-between pb-3 border-b border-[#E8DFD1]">
+        <div class="flex items-center gap-2">
+          <span id="brandBadge" class="text-xs font-bold px-3 py-1 rounded-full text-white"></span>
+          <span class="text-xs text-[#8D7B68] font-medium">採買填單</span>
+        </div>
+      </div>
+
+      <!-- 顧客基本資料 -->
+      <div class="bg-[#F4EFE6] p-4 rounded-2xl border border-[#E5DAC8] space-y-2">
+        <div class="flex justify-between items-center">
+          <label class="block text-sm font-bold text-[#342822]">
+            Threads 帳號 <span class="text-[#D34528]">*</span>
+          </label>
+          <span id="draftNotice" class="text-[11px] text-[#5A8265] hidden font-semibold">● 草稿已暫存</span>
+        </div>
+        <div class="relative">
+          <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-[#9E9081] font-bold">@</span>
+          <input type="text" id="threads" required placeholder="例：hunnie_franc" 
+                 class="w-full pl-8 pr-4 py-2.5 bg-white border border-[#D9CEBF] rounded-xl focus:ring-2 focus:ring-[#342822] focus:outline-none text-sm text-[#342822]">
+        </div>
+        <p class="text-xs text-[#8D7B68]">Threads私訊確認明細。</p>
+      </div>
+
+      <!-- 商品清單區塊 -->
+      <div id="itemsContainer" class="space-y-5"></div>
+
+      <!-- 新增商品按鈕 -->
+      <button type="button" id="addItemBtn" 
+              class="w-full py-3.5 border-2 border-dashed border-[#D2C5B3] rounded-2xl text-[#675C51] font-bold hover:border-[#342822] hover:text-[#342822] transition flex items-center justify-center gap-1.5 text-sm bg-white/70">
+        <span>＋ 新增下一件商品</span>
+      </button>
+
+      <!-- 送出按鈕 -->
+      <div class="pt-4 border-t border-[#E8DFD1]">
+        <button type="submit" id="submitBtn" 
+                class="w-full bg-[#342822] hover:bg-[#201814] text-[#F5EFE6] font-bold py-3.5 px-4 rounded-2xl shadow transition duration-150 flex items-center justify-center text-sm tracking-wide">
+          <span>確認完畢，送出訂單</span>
+        </button>
+      </div>
+    </form>
+  </div>
+
+  <!-- 成功彈窗 -->
+  <div id="successModal" class="hidden fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 z-50">
+    <div class="bg-[#FAF7F2] rounded-3xl p-6 max-w-sm w-full text-center space-y-4 shadow-2xl border border-[#E8DFD1]">
+      <div class="w-14 h-14 bg-[#E7F3E8] text-[#2F6B38] rounded-full flex items-center justify-center mx-auto text-2xl font-bold">✓</div>
+      
+      <div class="space-y-1">
+        <h3 class="text-lg font-bold text-[#342822]">訂單已成功送出！</h3>
+        <p class="text-xs text-[#8D7B68]">訂單編號：<span id="displayOrderId" class="font-mono font-bold text-[#342822] text-sm"></span></p>
+      </div>
+
+      <!-- 重點提醒區塊 -->
+      <div class="bg-[#FFF4E8] border border-[#F2D1B3] text-[#A0521C] p-3.5 rounded-2xl text-xs text-left leading-relaxed font-semibold space-y-1">
+        <div>⚠️ 重要提醒：</div>
+        <div>1. 請務必截圖此畫面私訊 Threads 小盒子。</div>
+        <div>2. 私訊時請主動詢問「訂金資訊」以完成訂單保留。</div>
+      </div>
+
+      <button id="closeModalBtn" class="w-full bg-[#342822] text-white font-medium py-3 rounded-xl text-sm hover:bg-[#201814] transition">
+        我知道了 / 完成
+      </button>
+    </div>
+  </div>
+
+  <script>
+    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwg8QHhdcbQ6wIUvhLkphgiTaYqvVUox2dF-hbevI92zV2xVLQ5_kAQwrrf833AQ0Cv/exec';
+    const STORAGE_KEY = 'TOKYO_ORDER_AUTUMN_V3';
+
+    let currentBrand = '';
+    let itemCount = 0;
+
+    const stepBrand = document.getElementById('stepBrand');
+    const orderForm = document.getElementById('orderForm');
+    const brandBadge = document.getElementById('brandBadge');
+    const itemsContainer = document.getElementById('itemsContainer');
+    const addItemBtn = document.getElementById('addItemBtn');
+    const draftNotice = document.getElementById('draftNotice');
+
+    // 選擇品牌
+    function selectBrand(brand) {
+      currentBrand = brand;
+      stepBrand.classList.add('hidden');
+      orderForm.classList.remove('hidden');
+
+      if (brand === 'UQ') {
+        brandBadge.innerText = 'UQ';
+        brandBadge.className = 'text-xs font-bold px-3 py-1 rounded-full text-white bg-[#E60012]';
+      } else {
+        brandBadge.innerText = 'GU';
+        brandBadge.className = 'text-xs font-bold px-3 py-1 rounded-full text-white bg-[#002B66]';
+      }
+
+      if (itemsContainer.children.length === 0) {
+        createItemCard();
+      }
+      saveDraft();
+    }
+
+    // 產生短訂單編號
+    function generateOrderId() {
+      const now = new Date();
+      const m = String(now.getMonth() + 1).padStart(2, '0');
+      const d = String(now.getDate()).padStart(2, '0');
+      const rand = Math.random().toString(36).substring(2, 6).toUpperCase();
+      return `TKY-${m}${d}-${rand}`;
+    }
+
+    // 前端 Canvas 自動壓縮圖片 (1200px / 0.75 品質)
+    function compressImage(file) {
+      return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = (e) => {
+          const img = new Image();
+          img.src = e.target.result;
+          img.onload = () => {
+            const canvas = document.createElement('canvas');
+            const MAX_SIZE = 1200;
+            let width = img.width;
+            let height = img.height;
+
+            if (width > height && width > MAX_SIZE) {
+              height = Math.round((height * MAX_SIZE) / width);
+              width = MAX_SIZE;
+            } else if (height > MAX_SIZE) {
+              width = Math.round((width * MAX_SIZE) / height);
+              height = MAX_SIZE;
+            }
+
+            canvas.width = width;
+            canvas.height = height;
+            const ctx = canvas.getContext('2d');
+            ctx.drawImage(img, 0, 0, width, height);
+            resolve(canvas.toDataURL('image/jpeg', 0.75));
+          };
+          img.onerror = reject;
+        };
+        reader.onerror = reject;
+      });
+    }
+
+    // 建立商品卡片
+    function createItemCard(initialData = {}) {
+      itemCount++;
+      const currentId = itemCount;
+      const initialQty = initialData.qty || 1;
+      const div = document.createElement('div');
+      div.className = 'item-card border border-[#E5DAC8] rounded-2xl p-4 sm:p-5 relative bg-white shadow-sm space-y-3';
+      div.id = `item-${currentId}`;
+      div.innerHTML = `
+        <div class="flex justify-between items-center pb-2 border-b border-[#F0E8DC]">
+          <span class="font-black text-xs text-[#342822]">商品 #${itemsContainer.children.length + 1}</span>
+          ${itemsContainer.children.length > 0 ? `<button type="button" onclick="removeItem(${currentId})" class="text-xs text-[#D34528] hover:underline font-medium">刪除此件</button>` : ''}
+        </div>
+
+        <!-- 1. 上傳商品照 (必填) -->
+        <div class="p-3 bg-[#F4EFE6] rounded-xl border border-[#E5DAC8]">
+          <label class="block text-xs font-bold text-[#342822] mb-1">
+            上傳商品照 <span class="text-[#D34528]">* (必填)</span>
+          </label>
+          <input type="file" accept="image/*" required class="item-file w-full text-xs text-[#8D7B68] file:mr-2 file:py-1.5 file:px-3 file:rounded-lg file:border-0 file:text-xs file:font-bold file:bg-[#342822] file:text-[#F5EFE6] hover:file:opacity-90">
+        </div>
+
+        <!-- 2. 貨號 與 數量(- 數量 +) -->
+        <div class="grid grid-cols-12 gap-3">
+          <div class="col-span-6">
+            <label class="block text-xs font-bold text-[#564B41] mb-1">貨號 <span class="text-[#D34528]">*</span></label>
+            <input type="text" class="item-no w-full px-3 py-2 border border-[#D9CEBF] rounded-xl text-sm focus:ring-2 focus:ring-[#342822] focus:outline-none bg-[#FCFAF7]" 
+                   placeholder="輸入貨號" value="${initialData.itemNo || ''}" required>
+          </div>
+          <div class="col-span-6">
+            <label class="block text-xs font-bold text-[#564B41] mb-1">數量 <span class="text-[#D34528]">*</span></label>
+            <div class="flex items-center border border-[#D9CEBF] rounded-xl bg-[#FCFAF7] overflow-hidden">
+              <button type="button" onclick="changeQty(${currentId}, -1)" class="w-10 py-2 bg-[#F4EFE6] hover:bg-[#EAE1D2] text-[#342822] font-bold text-base transition flex items-center justify-center select-none">−</button>
+              <input type="number" readonly class="item-qty w-full text-center py-2 bg-transparent text-sm font-bold text-[#342822] focus:outline-none select-none" value="${initialQty}">
+              <button type="button" onclick="changeQty(${currentId}, 1)" class="w-10 py-2 bg-[#F4EFE6] hover:bg-[#EAE1D2] text-[#342822] font-bold text-base transition flex items-center justify-center select-none">+</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. 顏色 與 尺寸 -->
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block text-xs font-bold text-[#564B41] mb-1">顏色 <span class="text-[#D34528]">*</span></label>
+            <input type="text" class="item-color w-full px-3 py-2 border border-[#D9CEBF] rounded-xl text-sm focus:ring-2 focus:ring-[#342822] focus:outline-none bg-[#FCFAF7]" 
+                   placeholder="例：03 GRAY" value="${initialData.color || ''}" required>
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-[#564B41] mb-1">尺寸 <span class="text-[#D34528]">*</span></label>
+            <input type="text" class="item-size w-full px-3 py-2 border border-[#D9CEBF] rounded-xl text-sm focus:ring-2 focus:ring-[#342822] focus:outline-none bg-[#FCFAF7]" 
+                   placeholder="例：WOMEN M" value="${initialData.size || ''}" required>
+          </div>
+        </div>
+
+        <!-- 4. 缺貨備選方案 -->
+        <div>
+          <div class="flex justify-between items-center mb-1">
+            <label class="block text-xs font-bold text-[#564B41]">缺貨備選方案</label>
+            <button type="button" onclick="setCancelBackup(${currentId})" class="text-[11px] text-[#A0521C] font-semibold underline hover:text-[#342822]">
+              點此填入「直接取消」
+            </button>
+          </div>
+          <input type="text" class="item-backup w-full px-3 py-2 border border-[#D9CEBF] rounded-xl text-sm focus:ring-2 focus:ring-[#342822] focus:outline-none bg-[#FCFAF7]" 
+                 placeholder="例：改換 09 BLACK" value="${initialData.backup || ''}">
+        </div>
+
+        <!-- 5. 備註 -->
+        <div>
+          <label class="block text-xs font-bold text-[#564B41] mb-1">備註</label>
+          <input type="text" class="item-note w-full px-3 py-2 border border-[#D9CEBF] rounded-xl text-sm focus:ring-2 focus:ring-[#342822] focus:outline-none bg-[#FCFAF7]" 
+                 value="${initialData.note || ''}">
+        </div>
+      `;
+      itemsContainer.appendChild(div);
+
+      div.querySelectorAll('input').forEach(input => {
+        input.addEventListener('input', saveDraft);
+      });
+    }
+
+    function changeQty(id, delta) {
+      const card = document.getElementById(`item-${id}`);
+      if (!card) return;
+      const qtyInput = card.querySelector('.item-qty');
+      let val = parseInt(qtyInput.value) || 1;
+      val = Math.max(1, Math.min(20, val + delta));
+      qtyInput.value = val;
+      saveDraft();
+    }
+
+    function setCancelBackup(id) {
+      const card = document.getElementById(`item-${id}`);
+      if (!card) return;
+      const backupInput = card.querySelector('.item-backup');
+      backupInput.value = '直接取消';
+      saveDraft();
+    }
+
+    function removeItem(id) {
+      const el = document.getElementById(`item-${id}`);
+      if (el) {
+        el.remove();
+        saveDraft();
+      }
+    }
+
+    // LocalStorage 草稿暫存
+    function saveDraft() {
+      const threads = document.getElementById('threads').value;
+      const cards = document.querySelectorAll('.item-card');
+      const items = [];
+      cards.forEach(card => {
+        items.push({
+          itemNo: card.querySelector('.item-no').value,
+          qty: card.querySelector('.item-qty').value,
+          color: card.querySelector('.item-color').value,
+          size: card.querySelector('.item-size').value,
+          backup: card.querySelector('.item-backup').value,
+          note: card.querySelector('.item-note').value
+        });
+      });
+      localStorage.setItem(STORAGE_KEY, JSON.stringify({ currentBrand, threads, items }));
+      draftNotice.classList.remove('hidden');
+    }
+
+    function loadDraft() {
+      const raw = localStorage.getItem(STORAGE_KEY);
+      if (!raw) return;
+      try {
+        const data = JSON.parse(raw);
+        if (data.threads) document.getElementById('threads').value = data.threads;
+        if (data.currentBrand) {
+          selectBrand(data.currentBrand);
+          if (data.items && data.items.length > 0) {
+            itemsContainer.innerHTML = '';
+            data.items.forEach(item => createItemCard(item));
+            draftNotice.classList.remove('hidden');
+          }
+        }
+      } catch (e) {}
+    }
+
+    loadDraft();
+    document.getElementById('threads').addEventListener('input', saveDraft);
+    addItemBtn.addEventListener('click', () => {
+      createItemCard();
+      saveDraft();
+    });
+
+    // 表單送出
+    document.getElementById('orderForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const submitBtn = document.getElementById('submitBtn');
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = '<span>圖片壓縮與訂單同步中，請稍候...</span>';
+
+      try {
+        const threads = document.getElementById('threads').value;
+        const orderId = generateOrderId();
+        const cards = document.querySelectorAll('.item-card');
+        const items = [];
+
+        for (const card of cards) {
+          const itemNo = card.querySelector('.item-no').value;
+          const qty = card.querySelector('.item-qty').value;
+          const color = card.querySelector('.item-color').value;
+          const size = card.querySelector('.item-size').value;
+          const backup = card.querySelector('.item-backup').value;
+          const note = card.querySelector('.item-note').value;
+          const fileInput = card.querySelector('.item-file');
+
+          let imageBase64 = '';
+          let imageName = '';
+          if (fileInput.files.length > 0) {
+            const file = fileInput.files[0];
+            imageBase64 = await compressImage(file);
+            imageName = file.name;
+          }
+
+          items.push({ 
+            brand: currentBrand, 
+            itemNo, 
+            qty, 
+            color, 
+            size, 
+            backup, 
+            note, 
+            imageBase64, 
+            imageName, 
+            imageType: 'image/jpeg' 
+          });
+        }
+
+        const payload = { orderId, threads, items };
+
+        await fetch(SCRIPT_URL, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+
+        localStorage.removeItem(STORAGE_KEY);
+        document.getElementById('displayOrderId').innerText = orderId;
+        document.getElementById('successModal').classList.remove('hidden');
+      } catch (err) {
+        alert('訂單送出失敗，請檢查網路或稍後再試：' + err);
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = '<span>確認完畢，送出訂單</span>';
+      }
+    });
+
+    document.getElementById('closeModalBtn').addEventListener('click', () => {
+      location.reload();
+    });
+  </script>
+</body>
+</html>
